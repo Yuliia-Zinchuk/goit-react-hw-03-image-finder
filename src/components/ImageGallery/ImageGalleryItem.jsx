@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import css from './ImageGallery.module.css';
 export const ImageGalleryItem = ({ images, openModal }) => {
   return images.map(image => (
@@ -8,8 +9,6 @@ export const ImageGalleryItem = ({ images, openModal }) => {
         openModal({ src: image.largeImageURL });
       }}
     >
-      {image.id}
-
       <img
         className={css.ImageGalleryItem_image}
         src={image.webformatURL}
@@ -19,8 +18,7 @@ export const ImageGalleryItem = ({ images, openModal }) => {
   ));
 };
 
-{
-  /* <li className={css.ImageGalleryItem}>
-  <img className={css.ImageGalleryItem_image} src={image.webformatURL} alt="" />
-</li>; */
-}
+ImageGalleryItem.propTypes = {
+  openModal: PropTypes.func.isRequired,
+  images: PropTypes.array.isRequired,
+};

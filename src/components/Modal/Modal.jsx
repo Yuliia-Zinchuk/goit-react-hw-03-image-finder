@@ -1,13 +1,4 @@
-// export const Modal = () => {
-//   return (
-//     <div className="Overlay">
-//       <div className="Modal">
-//         <img src="" alt="" />
-//       </div>
-//     </div>
-//   );
-// };
-
+import PropTypes from 'prop-types';
 import { Component } from 'react';
 import css from './Moda.module.css';
 export class Modal extends Component {
@@ -30,23 +21,19 @@ export class Modal extends Component {
   }
 
   render() {
-    // const {
-    //   image: { src, alt },
-    //   closeModal,
-    // } = this.props;
+    const { src } = this.props;
+
     return (
       <div className={css.Overlay} onClick={this.closeByBackdrop}>
         <div className={css.Modal}>
-          <img src={this.props.src.src} alt="" />
-          <button
-            // className={style.closeButton}
-            type="button"
-            onClick={this.props.closeModal}
-          >
-            Close
-          </button>
+          <img src={src.src} alt="" />
         </div>
       </div>
     );
   }
 }
+
+Modal.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  // src: PropTypes..isRequired,
+};

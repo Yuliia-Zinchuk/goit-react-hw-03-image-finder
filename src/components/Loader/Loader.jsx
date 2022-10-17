@@ -1,3 +1,19 @@
+import css from './Loader.module.css';
 export const Loader = () => {
-  return <p>Is loading pictures...</p>;
+  return (
+    <div className={css.lds_default}>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  );
 };
