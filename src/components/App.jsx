@@ -17,6 +17,7 @@ export class App extends Component {
     page: 1,
     loading: false,
     total: 0,
+    perPage: 12,
   };
 
   componentDidUpdate(_, prevState) {
@@ -70,7 +71,7 @@ export class App extends Component {
 
   render() {
     const {
-      state: { loading, query, images, currentImage, total },
+      state: { loading, query, images, currentImage, total, page, perPage },
       handleFormSubmit,
       updateCurrentImage,
       closeModal,
@@ -84,7 +85,10 @@ export class App extends Component {
           <ImageGallery openModal={updateCurrentImage} images={images} />
         )}
         {currentImage && <Modal src={currentImage} closeModal={closeModal} />}
-        {total > 12 && <Button handlerLoadMore={loadMore} />}
+
+        {Math.ceil(total / page) > perPage && (
+          <Button handlerLoadMore={loadMore} />
+        )}
         <ToastContainer
           autoClose={3000}
           position="top-center"
